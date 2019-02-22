@@ -47,7 +47,12 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('code', function() {
-	return gulp.src('app/*.html')
+	return gulp.src('app/**/*.html')
+	.pipe(browserSync.reload({ stream: true }))
+});
+
+gulp.task('code_php', function() {
+	return gulp.src('app/**/*.php')
 	.pipe(browserSync.reload({ stream: true }))
 });
 
@@ -70,7 +75,8 @@ if (gulpversion == 3) {
 	gulp.task('watch', ['styles', 'scripts', 'browser-sync'], function() {
 		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
 		gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['scripts']);
-		gulp.watch('app/*.html', ['code'])
+		gulp.watch('app/**/*.html', ['code'])
+		gulp.watch('app/**/*.php', ['code_php'])
 	}); 
 	gulp.task('default', ['watch']);
 }
@@ -79,7 +85,8 @@ if (gulpversion == 4) {
 	gulp.task('watch', function() {
 		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.parallel('styles'));
 		gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.parallel('scripts'));
-		gulp.watch('app/*.html', gulp.parallel('code'))
+		gulp.watch('app/**/*.html', gulp.parallel('code'));
+		gulp.watch('app/**/*.php', gulp.parallel('code_php'));
 	});
 	gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
 }
