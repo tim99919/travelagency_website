@@ -71,7 +71,7 @@ if (gulpversion == 3) {
 		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
 		gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['scripts']);
 		gulp.watch('app/*.html', ['code'])
-	});
+	}); 
 	gulp.task('default', ['watch']);
 }
 
