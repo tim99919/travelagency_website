@@ -1,6 +1,8 @@
 /node_modules/
 /dist/
 /.git/
+/app/.htaccess
+/app/ht.access
 /app/css/
 /**/_backstage
 /**/package-lock.json
