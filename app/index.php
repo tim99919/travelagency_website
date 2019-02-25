@@ -1,69 +1,124 @@
-<!DOCTYPE html>
-<html lang="ru">
+<?php
+define("SPBPETERCITYTRIP_78", true);
+defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
+include_once 'settings.php';
+include_once("Mysql/Mysql.php");
+include_once("Mysql/Exception.php");
+include_once("Mysql/Statement.php");
+use \Mysql\Mysql as Mysql;
+use \Mysql\Exception as Exception;
+use \Mysql\Statement as Statement;
 
-<head>
+session_start();
 
-	<meta charset="utf-8">
-	<base href="/">
+// $db = Mysql::create(HOST, USER, PASS)
+// 	->setDatabaseName(DB)
+// 	->setCharset('utf8');
 
-	<title>OptimizedHTML 4!!!</title>
-	<meta name="description" content="">
+// Парсинг строки запроса
+if ($_SERVER['REQUEST_URI'] == '/') {
+	$Page   = 'index';
+	$Module = 'index';
+} else {
+	$URL_Path  = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
+	$URL_Parts = explode('/',trim($URL_Path,'/'));
+	$Page      = array_shift($URL_Parts);
+	$Module    = array_shift($URL_Parts);
+	if (!empty($Module)) {
+		$Param = array();
+		for ($i = 0; $i < count($URL_Parts); $i++) {
+			$Param[$URL_Parts[$i]] = $URL_Parts[++$i];
+		}
+	};
+};
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
-	<!-- Template Basic Images Start -->
-	<meta property="og:image" content="path/to/image.jpg">
-	<link rel="icon" href="/img/favicon/favicon.ico">
-	<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon-180x180.png">
-	<!-- Template Basic Images End -->
-	
-	<!-- Custom Browsers Color Start -->
-	<meta name="theme-color" content="#000">
-	<!-- Custom Browsers Color End -->
+// Обработка запроса страницы
+if      ($Page == 'index')    						include 'pages/index.php';     // Главная
+else if ($Page == 'not-found') 						include 'pages/not-found.php';
+else {
+	exit(header('Location: /not-found'));
+}
 
-	<link rel="stylesheet" href="/css/main.min.css">
+// ФУНКЦИИ
+// Отправка сообщения
+function MessageSend($p1, $p2, $p3 = ''){
+	if ($p1 == 1)      {$p1 = 'Ошибка'; $msg_class = "error-msg";}
+	else if ($p1 == 2) {$p1 = 'Подсказка'; $msg_class = "hint-msg";}
+	else if ($p1 == 3) {$p1 = 'Информация'; $msg_class = "info-msg";}
+	$_SESSION['message']   = '<div class="MessageBlock '.$msg_class.'"><p><b>'.$p1.'</b>: '.$p2.'</p></div>';
+	if ($p3) $_SERVER['HTTP_REFERER'] = $p3;
+	exit(header('Location: '.$_SERVER['HTTP_REFERER']));
+};
 
-</head>
+// Получение сообщения
+function MessageShow(){
+	if ($_SESSION['message']) $Message = $_SESSION['message'];
+	echo $Message;
+	$_SESSION['message'] = array();
+};
 
-<body>
+// Уровень доступа
+function UAccess($p1) {
+	if ($_SESSION['USER_STATUS'] < $p1) MessageSend(1, 'У вас нет прав доступа для просмотра данной страницы сайта');
+}
 
-	<!-- Custom HTML -->
+// Рандомная строка
+function RandomString($p1) {
+	$Char = '0123456789abcdefghijklmnopqrstuvwxyz';
+	for ($i = 0; $i < $p1; $i ++) $String .=$Char[rand(0, strlen($Char)-1)];
+	return $String;
+}
 
-	<div class="container">
+// Скрытие символов email
+function HideEmail($p1) {
+	$Explode = explode ('@', $p1);
+	return $Explode[0];
+}
 
-		<div class="row">
+// Антиинъекция
+function FormChars ($p1){
+	return nl2br(htmlspecialchars(trim($p1), ENT_QUOTES, "utf-8"), false);
+}
 
-			<div class="col-8 offset-2">
-				
-				<img class="img-responsive" src="/img/preview.jpg" alt="Start HTML5 Template">
+// Пагинатор
+function PageSelector($p1, $p2, $p3, $p4 = 12) {
+	/*
+	$p1 - URL (Например: /news/page/);
+	$p2 - Текущая страница (из Param['page']);
+	$p3 - Количество новостей из запроса;
+	$p4 - Количество новостей на странице;
+	*/
+	$Page = ceil($p3/$p4); //число страниц
+	if ($Page > 1) {
+		//Нужен ли пагинатор?
+		echo '<div class="paginator text-center">';
+		for ($i = ($p2 - 3); $i < ($Page + 1); $i ++) {
+			if ($i > 0 and $i <= ($p2 + 3)){
+				if ($p2 == $i) $Switch = 'SwitchItemCur';
+				else 					 $Switch = 'SwitchItem';
+				echo '<a class="'.$Switch.'" href="'.$p1.$i.'">'.$i.'</a>';
+			} 
+		};
+		echo '</div>';
+	}
+}
 
-				<br>
+// Меню
+function HeaderTop($p1 = 1, $p2 = 1){
+	return 'Menu here';
+}
 
-				<h2>Welcome to startup HTML template OptimizedHTML 4!!!</h2>
+function translit($s) {
+	$s = (string) $s; // преобразуем в строковое значение
+	$s = strip_tags($s); // убираем HTML-теги
+	$s = str_replace(array("\n", "\r"), " ", $s); // убираем перевод каретки
+	$s = preg_replace("/\s+/", ' ', $s); // удаляем повторяющие пробелы
+	$s = trim($s); // убираем пробелы в начале и конце строки
+	$s = function_exists('mb_strtolower') ? mb_strtolower($s, 'UTF-8') : strtolower($s, 'UTF-8'); // переводим строку в нижний регистр (иногда надо задать локаль)
+	$s = strtr($s, array('а'=>'a','б'=>'b','в'=>'v','г'=>'g','д'=>'d','е'=>'e','ё'=>'e','ж'=>'j','з'=>'z','и'=>'i','й'=>'y','к'=>'k','л'=>'l','м'=>'m','н'=>'n','о'=>'o','п'=>'p','р'=>'r','с'=>'s','т'=>'t','у'=>'u','ф'=>'f','х'=>'h','ц'=>'c','ч'=>'ch','ш'=>'sh','щ'=>'shch','ы'=>'y','э'=>'e','ю'=>'yu','я'=>'ya','ъ'=>'','ь'=>''));
+	$s = preg_replace("/[^0-9a-z-_ ]/i", "", $s); // очищаем строку от недопустимых символов
+	$s = str_replace(" ", "-", $s); // заменяем пробелы знаком минус
+	return $s; // возвращаем результат
+}
 
-				<p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit. Ad distinctio animi, dolorum eaque praesentium unde aliquid, mollitia itaque voluptate quos modi et incidunt tempora fugiat voluptatum quia esse dolor repellat.</p>
-				<p>Nemo velit incidunt assumenda, eaque, sequi vitae facilis doloribus qui totam, fuga iure dignissimos ab non praesentium. Vitae similique, corrupti aliquam nam modi explicabo distinctio qui cum officia ullam quam!</p>
-				<p>Aperiam veritatis debitis quibusdam animi totam quos mollitia aspernatur porro consectetur id quod tempore numquam, ullam ex quae quasi voluptatem incidunt placeat asperiores quas autem! Labore modi quae nulla illo!</p>
-
-				<br>
-
-				<div class="row">
-
-					<div class="col-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis quo vero molestias, esse doloribus corrupti, nemo minus ullam tempore tenetur magni aut quos soluta sit adipisci eius expedita amet non.</div>
-					<div class="col-6">Odit enim harum minus nam excepturi quae vitae consectetur repudiandae natus neque ab asperiores repellat quo dicta vel accusamus voluptatum rerum autem eaque rem laudantium, sint veritatis. Minus, unde rem.</div>
-
-				</div>
-
-				<br>
-
-			</div>
-			
-		</div>
-
-	</div>
-
-	<script src="js/scripts.min.js"></script>
-
-</body>
-</html>
+?>

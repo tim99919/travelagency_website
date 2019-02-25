@@ -1,3 +1,6 @@
+<?php
+defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
