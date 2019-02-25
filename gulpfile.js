@@ -15,10 +15,11 @@ var gulp          = require('gulp'),
 
 gulp.task('browser-sync', function() {
 	browserSync({
-		server: {
-			baseDir: 'app'
-		},
+		// server: {
+		// 	baseDir: 'app'
+		// },
 		notify: false,
+		proxy: 'spbpetercitytrip.com',
 		// open: false,
 		// online: false, // Work Offline Without Internet Connection
 		// tunnel: true, tunnel: "projectname", // Demonstration page: http://projectname.localtunnel.me
@@ -60,8 +61,8 @@ gulp.task('rsync', function() {
 	return gulp.src('app/**')
 	.pipe(rsync({
 		root: 'app/',
-		hostname: 'username@yousite.com',
-		destination: 'yousite/public_html/',
+		hostname: 'PavelMinev@spbpetercitytrip.com',
+		destination: 'spbpetercitytrip.com/public_html/',
 		// include: ['*.htaccess'], // Includes files to deploy
 		exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excludes files from deploy
 		recursive: true,
@@ -75,8 +76,8 @@ if (gulpversion == 3) {
 	gulp.task('watch', ['styles', 'scripts', 'browser-sync'], function() {
 		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
 		gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['scripts']);
-		gulp.watch('app/**/*.html', ['code'])
-		gulp.watch('app/**/*.php', ['code_php'])
+		gulp.watch('app/**/*.html', ['code']);
+		gulp.watch('app/**/*.php', ['code_php']);
 	}); 
 	gulp.task('default', ['watch']);
 }
