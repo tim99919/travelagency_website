@@ -38,7 +38,6 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
 				<br>
 				<h2>404 NOT FOUND</h2>
 				<p>Back to <a href="/">Home page</a></p>
-				<p>Check your url, please</p>
 			</div>
 		</div>
 	</div>
