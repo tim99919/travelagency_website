@@ -1,0 +1,8 @@
+User-agent: *
+Allow: */css/*.css
+Allow: */js/*.js
+Allow: */img/*.png
+Allow: */img/*.jpg
+Disallow: */include/
+Disallow: /settings
+Host: http://your-cite.com
