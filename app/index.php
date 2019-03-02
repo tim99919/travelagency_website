@@ -17,7 +17,7 @@ session_start();
 
 // Парсинг строки запроса
 $_SESSION['LANG_LINK'] = '';
-$_SESSION['LANGUAGE_INT'] = 'EN';
+$_SESSION['LANGUAGE_INT'] = 'en';
 if ($_SERVER['REQUEST_URI'] == '/') {
 	$Page   = 'index';
 	$Module = 'index';
