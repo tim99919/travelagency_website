@@ -16,6 +16,8 @@ session_start();
 // 	->setCharset('utf8');
 
 // Парсинг строки запроса
+$_SESSION['LANG_LINK'] = '';
+$_SESSION['LANGUAGE_INT'] = 'en';
 if ($_SERVER['REQUEST_URI'] == '/') {
 	$Page   = 'index';
 	$Module = 'index';
@@ -23,12 +25,30 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 	$URL_Path  = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
 	$URL_Parts = explode('/',trim($URL_Path,'/'));
 	$Page      = array_shift($URL_Parts);
-	$Module    = array_shift($URL_Parts);
-	if (!empty($Module)) {
-		$Param = array();
-		for ($i = 0; $i < count($URL_Parts); $i++) {
-			$Param[$URL_Parts[$i]] = $URL_Parts[++$i];
-		}
+	if ($Page == 'fr') {
+		$_SESSION['LANGUAGE_INT'] = 'fr';
+		$_SESSION['LANG_LINK'] = '/fr';
+		$Page      = array_shift($URL_Parts);
+		$Module    = array_shift($URL_Parts);
+		if (empty($Page)) {
+			$Page   = 'index';
+			$Module = 'index'; 
+		}else if (!empty($Module)) {
+			$Param = array();
+			for ($i = 0; $i < count($URL_Parts); $i++) {
+				$Param[$URL_Parts[$i]] = $URL_Parts[++$i];
+			}
+		};
+	}else{
+		$_SESSION['LANGUAGE_INT'] = 'en';
+		$_SESSION['LANG_LINK'] = '';
+		$Module    = array_shift($URL_Parts);
+		if (!empty($Module)) {
+			$Param = array();
+			for ($i = 0; $i < count($URL_Parts); $i++) {
+				$Param[$URL_Parts[$i]] = $URL_Parts[++$i];
+			}
+		};
 	};
 };
 
