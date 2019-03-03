@@ -9,7 +9,7 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
     <meta charset="utf-8">
     <base href="/">
 
-    <title>OptimizedHTML 4</title>
+    <title>SPBPETERCITYTRIP</title>
     <meta name="description" content="">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +25,8 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
     <meta name="theme-color" content="#000">
     <!-- Custom Browsers Color End -->
 
-    <link rel="stylesheet" href="/css/main.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <script defer src="/libs/fontawesome/all.min.js"></script>
 
 </head>
 
@@ -33,33 +34,30 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
 
     <!-- Custom HTML -->
 
-    <section class="top-mnu">
+    <section class="top-line">
 
         <div class="container">
 
-            <div class="row">
+            <!-- <div class="row"> -->
+            <!-- <div class=""> -->
+            <ul class="row">
+                <li class="top-line__item col"><span></span>+7(905)253-93-13</li>
+                <li class="top-line__item col">1</li>
+                <li class="top-line__item col">1</li>
+            </ul>
 
-                <ul>
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-								</ul>
-
-<<<<<<< HEAD
-				<h2>Welcome to startup HTML template OptimizedHTML 4!</h2>
-				<p><?=$_SESSION['LANGUAGE_INT']?></p>
-				<p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit. Ad distinctio animi, dolorum eaque praesentium unde aliquid, mollitia itaque voluptate quos modi et incidunt tempora fugiat voluptatum quia esse dolor repellat.</p>
-				<p>Nemo velit incidunt assumenda, eaque, sequi vitae facilis doloribus qui totam, fuga iure dignissimos ab non praesentium. Vitae similique, corrupti aliquam nam modi explicabo distinctio qui cum officia ullam quam!</p>
-				<p>Aperiam veritatis debitis quibusdam animi totam quos mollitia aspernatur porro consectetur id quod tempore numquam, ullam ex quae quasi voluptatem incidunt placeat asperiores quas autem! Labore modi quae nulla illo!</p>
-=======
+            <div class="social">
+                <div class="social__item">
+                    <i class="fab fa-vk fa-lg"></i>
+                </div>
             </div>
 
+
         </div>
->>>>>>> front-branch
-
-
 
     </section>
+
+
 
     <div class="container">
 
@@ -73,6 +71,8 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
         </div>
 
     </div>
+
+
 
     <script src="/js/scripts.min.js"></script>
 
