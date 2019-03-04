@@ -37,28 +37,36 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
   <section class="top-line">
     <div class="container">
       <div class="row no-gutters justify-content-between align-items-center">
+
         <div class="col-6">
+
           <ul class="top-line__item-list row no-gutters align-items-center">
             <li class="top-line__item col-4"><span class="top-line__item-icon"><i class="fas fa-phone"></i></span>+7(905)253-93-13</li>
             <li class="top-line__item col-4"><span class="top-line__item-icon"><i class="far fa-comment"></i></span>WatsApp, Viber</li>
             <li class="top-line__item col-4"><span class="top-line__item-icon"><i class="fas fa-globe"></i></span>Русский</li>
           </ul>
+
         </div>
 
         <div class="col-2">
           <div class="social row no-gutters justify-content-between">
+
             <div class="social__item">
               <i class="fab fa-vk fa-lg"></i>
             </div>
+
             <div class="social__item">
               <i class="fab fa-facebook-f fa-lg"></i>
             </div>
+
             <div class="social__item">
               <i class="fab fa-twitter fa-lg"></i>
             </div>
+
             <div class="social__item">
               <i class="fab fa-instagram fa-lg"></i>
             </div>
+
           </div>
         </div>
 
@@ -67,8 +75,8 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
   </section>
 
   <header class="header">
-
     
+
 
   </header>
 
