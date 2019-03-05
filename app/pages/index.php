@@ -41,9 +41,12 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
         <div class="col-6">
 
           <ul class="top-line__item-list row no-gutters align-items-center">
-            <li class="top-line__item col-4"><span class="top-line__item-icon"><i class="fas fa-phone"></i></span>+7(905)253-93-13</li>
-            <li class="top-line__item col-4"><span class="top-line__item-icon"><i class="far fa-comment"></i></span>WatsApp, Viber</li>
-            <li class="top-line__item col-4"><span class="top-line__item-icon"><i class="fas fa-globe"></i></span>Русский</li>
+            <li class="top-line__item col-4"><span class="top-line__item-icon"><i
+                  class="fas fa-phone"></i></span><a href="tel:+7(905)253-93-13">+7(905)253-93-13</a></li>
+            <li class="top-line__item col-4"><span class="top-line__item-icon"><i
+                  class="far fa-comment"></i></span>WatsApp, Viber</li>
+            <li class="top-line__item col-4"><span class="top-line__item-icon"><i
+                  class="fas fa-globe"></i></span>Русский</li>
           </ul>
 
         </div>
@@ -74,26 +77,34 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
     </div>
   </section>
 
-  <header class="header">
+  <header class="header header--align--center">
+
+  <div class="row">
+
+    <div class="logo">
+      
+    </div>
     
+    <nav class="main-mnu col-7">
+  
+    </nav>
+
+  </div>
+
+    
+  
+    <div class="header__content-wrapper container-fluid">
+
+        <h1 class="header__main-heading">туры по cанкт-петербургу</h1>
+        <p class="header__text">Индивидуальные городские туры на комфортном автомобиле бизнес класса</br>
+        Сделайте свою поездку в Санкт-Петербург незабываемой , вместе с команией StPeterCityTrip</p>
+
+    </div>
 
 
   </header>
 
 
-
-  <div class="container">
-
-    <div class="row">
-
-      <div class="col-8 offset-2">
-
-
-      </div>
-
-    </div>
-
-  </div>
 
 
 
