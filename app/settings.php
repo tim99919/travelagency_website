@@ -3,9 +3,9 @@
 	//define('HOST','192.168.0.33');
 	//define('HOST','192.168.0.101');
 	define('HOST','localhost');
-	define('USER','spbpiter_78');
-	define('PASS','qwerty');
-	define('DB','SPBPeterCity');
+	define('USER','site_trip');
+	define('PASS','SpbPeterCityTrip_cc584');
+	define('DB','spbtrip_cc584');
 
-	define('MAIN_ADMIN_LOGIN','SPBPeterCity');
+	define('MAIN_ADMIN_LOGIN','spbtrip_cc584');
 ?>

@@ -11,13 +11,15 @@ use \Mysql\Statement as Statement;
 
 session_start();
 
-// $db = Mysql::create(HOST, USER, PASS)
-// 	->setDatabaseName(DB)
-// 	->setCharset('utf8');
+$db = Mysql::create(HOST, USER, PASS)
+	->setDatabaseName(DB)
+	->setCharset('utf8');
 
 // Парсинг строки запроса
-$_SESSION['LANG_LINK'] = '';
-$_SESSION['LANGUAGE_INT'] = 'en';
+if (!$_SESSION['LANGUAGE_INT']) {
+	$_SESSION['LANG_LINK'] = '';
+	$_SESSION['LANGUAGE_INT'] = 'en';
+}
 if ($_SERVER['REQUEST_URI'] == '/') {
 	$Page   = 'index';
 	$Module = 'index';
@@ -25,9 +27,9 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 	$URL_Path  = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
 	$URL_Parts = explode('/',trim($URL_Path,'/'));
 	$Page      = array_shift($URL_Parts);
-	if ($Page == 'fr') {
-		$_SESSION['LANGUAGE_INT'] = 'fr';
-		$_SESSION['LANG_LINK'] = '/fr';
+	if (in_array($Page, ['sp', 'ru'])) {
+		$_SESSION['LANGUAGE_INT'] = $Page;
+		$_SESSION['LANG_LINK'] = '/'.$Page;
 		$Page      = array_shift($URL_Parts);
 		$Module    = array_shift($URL_Parts);
 		if (empty($Page)) {
@@ -40,6 +42,9 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 			}
 		};
 	}else{
+		if ($Page == 'en') {
+			exit(header('Location: /'.implode('/', $URL_Parts)));
+		}
 		$_SESSION['LANGUAGE_INT'] = 'en';
 		$_SESSION['LANG_LINK'] = '';
 		$Module    = array_shift($URL_Parts);
@@ -125,6 +130,7 @@ function PageSelector($p1, $p2, $p3, $p4 = 12) {
 
 // Меню
 function HeaderTop($p1 = 1, $p2 = 1){
+	$query = $db -> query('SELECT `menu_key`, `munu_text` FROM `menu` WHERE `menu_lang` = "?s"', $_SESSION['LANGUAGE_INT']);
 	return 'Menu here';
 }
 
