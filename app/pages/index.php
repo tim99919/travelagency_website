@@ -32,7 +32,7 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
 <body>
 
 	<!-- Custom HTML -->
-
+	<?php MessageShow(); ?>
 	<div class="container">
 
 		<div class="row">
