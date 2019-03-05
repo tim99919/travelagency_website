@@ -11,6 +11,7 @@ use \Mysql\Statement as Statement;
 
 session_start();
 
+// Init db
 $db = Mysql::create(HOST, USER, PASS)
 	->setDatabaseName(DB)
 	->setCharset('utf8');
