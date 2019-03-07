@@ -41,12 +41,9 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
         <div class="col-6">
 
           <ul class="top-line__item-list row no-gutters align-items-center">
-            <li class="top-line__item col-4"><span class="top-line__item-icon"><i
-                  class="fas fa-phone"></i></span><a href="tel:+7(905)253-93-13">+7(905)253-93-13</a></li>
-            <li class="top-line__item col-4"><span class="top-line__item-icon"><i
-                  class="far fa-comment"></i></span>WatsApp, Viber</li>
-            <li class="top-line__item col-4"><span class="top-line__item-icon"><i
-                  class="fas fa-globe"></i></span>Русский</li>
+            <li class="top-line__item col-4"><a href="tel:+7(905)253-93-13"><span class="top-line__item-icon"><i class="fas fa-phone"></i></span>+7(905)253-93-13</a></li>
+            <li class="top-line__item col-4"><a href="#"><span class="top-line__item-icon"><i class="far fa-comment"></i></span>WatsApp, Viber</a></li>
+            <li class="top-line__item col-4"><a href="#"><span class="top-line__item-icon"><i class="fas fa-globe"></i></span>Русский</a></li>
           </ul>
 
         </div>
@@ -55,19 +52,19 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
           <div class="social row no-gutters justify-content-between">
 
             <div class="social__item">
-              <i class="fab fa-vk fa-lg"></i>
+              <a href="#"><i class="fab fa-vk fa-lg"></i></a>
             </div>
 
             <div class="social__item">
-              <i class="fab fa-facebook-f fa-lg"></i>
+              <a href="#"><i class="fab fa-facebook-f fa-lg"></i></a>
             </div>
 
             <div class="social__item">
-              <i class="fab fa-twitter fa-lg"></i>
+              <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
             </div>
 
             <div class="social__item">
-              <i class="fab fa-instagram fa-lg"></i>
+              <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
             </div>
 
           </div>
@@ -77,13 +74,15 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
     </div>
   </section>
 
+
+
   <header class="header">
     
     <div class="container">
-      <div class="row justify-content-between align-items-end">
+      <div class="row justify-content-between align-items-baseline">
 
         <div class="logo col-2">
-          
+          <span>LOGO</span>
         </div>
         
         <nav class="main-mnu col-7">
@@ -123,14 +122,82 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
 
   </header>
 
+
+
   <section class="tours">
+    <div class="gradient"></div>
   
-    
+    <h2 class="section-heading">Awesome Heading</h2>
+
+    <div class="container">
+      <div class="row">
+      
+        <div class="tours__item col-4">
+
+          <img src="/img/item1.jpg" alt="Безвизовые круизы">
+          
+          <div class="tours__item-subscription">
+            <p>Безвизовые круизы</p>
+          </div>
+        
+        </div>
+      
+        <div class="tours__item col-4">
+
+          <img src="/img/item2.jpg" alt="Комплексные туры">
+          
+          <div class="tours__item-subscription">
+            <p>Комплексные туры</p>
+          </div>
+        
+        </div>
+      
+        <div class="tours__item col-4">
+
+          <img src="/img/item3.jpg" alt="Туры по каналам">
+          
+          <div class="tours__item-subscription">
+            <p>Туры по каналам</p>
+          </div>
+        
+        </div>
+      
+        
+      
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <section class="about">
   
   </section>
 
 
 
+  <section class="benefits">
+  
+  </section>
+
+
+
+  <section class="parallax">
+  
+  </section>
+
+
+
+  <section class="get-in-touch">
+  
+  </section>
+
+
+
+  <footer class="footer">
+  
+  </footer>
 
 
   <script src="/js/scripts.min.js"></script>
