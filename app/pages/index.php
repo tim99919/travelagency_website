@@ -77,32 +77,57 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
     </div>
   </section>
 
-  <header class="header header--align--center">
-
-  <div class="row">
-
-    <div class="logo">
-      
-    </div>
+  <header class="header">
     
-    <nav class="main-mnu col-7">
-  
-    </nav>
+    <div class="container">
+      <div class="row justify-content-between align-items-end">
 
-  </div>
+        <div class="logo col-2">
+          
+        </div>
+        
+        <nav class="main-mnu col-7">
 
-    
-  
-    <div class="header__content-wrapper container-fluid">
+          <ul class="main-mnu__items">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Туры</a></li>
+            <li><a href="#">Трансфер</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">Советы туристам</a></li>
+          </ul>
 
-        <h1 class="header__main-heading">туры по cанкт-петербургу</h1>
-        <p class="header__text">Индивидуальные городские туры на комфортном автомобиле бизнес класса</br>
-        Сделайте свою поездку в Санкт-Петербург незабываемой , вместе с команией StPeterCityTrip</p>
+        </nav>
 
+      </div>
     </div>
 
+    <!-- <div class="header__content"> -->
+    
+      <div class="container">
+        <div class="row justify-content-center">
+
+          <h1 class="header__main-heading">туры по cанкт-петербургу</h1>
+          <div class="w-100"></div>
+          
+          <p class="header__text header__text--align--center">Индивидуальные городские туры на комфортном автомобиле бизнес класса</br>
+          Сделайте свою поездку в Санкт-Петербург незабываемой , вместе с команией StPeterCityTrip</p>
+          <div class="w-100"></div>
+
+          <button class="button">Начать</button>
+
+        </div>    
+      </div>
+    
+    <!-- </div> -->
 
   </header>
+
+  <section class="tours">
+  
+    
+  
+  </section>
 
 
 

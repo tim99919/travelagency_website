@@ -5,6 +5,8 @@
 /app/ht.access
 /app/css/
 /design/
+/test/
+/app/fonts/DELETE
 /**/_backstage
 /**/package-lock.json
 /**/Thumbs.db

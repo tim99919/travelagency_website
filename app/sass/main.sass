@@ -1,6 +1,7 @@
-@import "vars"
-@import "fonts"
-@import "libs"
+@import "_addons/vars"
+@import "_addons/fonts"
+@import "_addons/libs"
+@import "_addons/_mixins/em"
 
 ::placeholder
 	color: #666
@@ -10,7 +11,7 @@
 	color: #fff
 
 body
-	font-size: 16px
+	font-size: $default-text-size + px
 	min-width: 320px
 	position: relative
 	line-height: 1.65
@@ -38,18 +39,12 @@ body
 b, strong
 	font-weight: bold
 
-// .top-mnu
-// 	background-color: #000
-// 	ul
-// 		width: 50%
-// 		display: inline-flex
-// 		justify-content: space-between
-// 	li
-// 		display: block
-		
-		
-	
+a
+	color: #fff
+	outline: none !important
+	text-decoration: none
+	&:hover
+		color: orange
+		text-decoration: none
 
-
-
-@import "media" // Always at the end
+// @import "_addons/media" // Always at the end

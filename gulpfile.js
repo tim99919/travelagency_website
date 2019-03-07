@@ -26,18 +26,27 @@ gulp.task('browser-sync', function() {
 	})
 });
 
+gulp.task('concat-sass', function () {
+	return gulp.src([
+		'app/sass/**/*',
+		'!app/sass/_addons/**/*'
+	])
+	.pipe(concat('style.sass'))
+	.pipe(gulp.dest('test/sass'))
+});
+
 gulp.task('styles', function() {
 	return gulp.src([
-		'app/'+syntax+'/**/main.'+syntax+'',
-		'app/'+syntax+'/**/*.'+syntax+'',
+		'app/sass/**/*',
+		'!app/sass/_addons/**/*'
 	])
+	.pipe(concat('style.sass'))
 	.pipe(sass({ outputStyle: 'expanded' }).on("error", notify.onError()))
 	.pipe(rename({ suffix: '.min', prefix : '' }))
 	.pipe(autoprefixer(['last 15 versions']))
-	.pipe(concat('style.min.css'))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Opt., comment out when debugging
 	.pipe(gulp.dest('app/css'))
-	.pipe(browserSync.stream())
+	.pipe(browserSync.stream({ stream: true }))
 });
 
 gulp.task('scripts', function() {
@@ -88,7 +97,7 @@ if (gulpversion == 3) {
 
 if (gulpversion == 4) {
 	gulp.task('watch', function() {
-		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.parallel('styles'));
+		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.parallel('concat-sass', 'styles'));
 		gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.parallel('scripts'));
 		gulp.watch('app/**/*.html', gulp.parallel('code'));
 		gulp.watch('app/**/*.php', gulp.parallel('code_php'));
