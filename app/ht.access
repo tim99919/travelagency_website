@@ -1,3 +1,13 @@
+AddDefaultCharset utf-8
+RewriteEngine on
+RewriteBase /
+Options All -Indexes +FollowSymlinks +MultiViews
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
+
 <ifModule mod_expires.c>
 
 # Add correct content-type for fonts
