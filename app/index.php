@@ -146,6 +146,7 @@ function HeaderTop($db, $p1 = 1, $p2 = 1){
 					while (($result = $query -> fetch_assoc()) !== NULL) {
 						$isActive = ($i === $p1) ? ' active' : '';
 						$list .= '<li class="main-mnu__item'.$isActive.'"><a href="'.$_SESSION['LANG_LINK'].$result['menu_link'].'">'.$result['menu_text'].'</a></li>';
+						$i++;
 					};
 					$list .= '
 				</ul>
