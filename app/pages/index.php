@@ -82,7 +82,7 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
   <header class="header">
     <?=HeaderTop($db, 1);?>
 
-    <div class="container">
+    <!-- <div class="container">
       <div class="row justify-content-between align-items-baseline">
 
         <div class="logo col-2">
@@ -103,8 +103,8 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
         </nav>
 
       </div>
-    </div>
-    
+    </div> -->
+
 
     <!-- <div class="header__content"> -->
 
@@ -207,7 +207,7 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
           <div class="sect-item">
 
             <img src="/img/kazanskij.jpg" class="img-responsive" alt="Казанский собор">
-            
+
           </div>
 
         </div>
@@ -217,29 +217,116 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
           <div class="sect-item">
 
             <h3 class="">Lorem ipsum consectetur</h3>
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-            
+            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+              deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+              architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+              odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
+              quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam
+              eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+
           </div>
 
         </div>
+      </div>
+    </div>
+
+    <section class="sect sect--benefits">
+
+      <div class="container">
+        <div class="sect__items-wrapper row">
+
+          <div class="col-4">
+
+            <div class="sect-item">
+
+              <i class="fas fa-hand-peace"></i>
+              <h4>BENEFIT 1</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="col-4">
+
+            <div class="sect-item">
+
+              <i class="fas fa-hand-peace"></i>
+              <h4>BENEFIT 1</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="col-4">
+
+            <div class="sect-item">
+
+              <i class="fas fa-hand-peace"></i>
+              <h4>BENEFIT 1</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
 
   </section>
 
 
 
-  <section class="benefits">
+  <section class="sect parallax">
+
+<div class="parallax__group">
+      <div class="parallax__layer parallax__layer--back">
+        <!-- <img src="/img/parallax.jpg" alt="parallax"> -->
+  
+      </div>
+  
+      <div class="parallax__layer parallax__layer--base">
+        <div class="container">
+          <div class="sect__items-wrapper row align-items-center justify-content-center">
+  
+            <h2 class="sect__heading">AWESOME HEADING</h2>
+            <div class="w-100"></div>
+            <button class="button mb-3">button</button>
+  
+          </div>
+        </div>
+      </div>
+</div>
 
   </section>
 
 
 
-  <section class="parallax">
+  <section class="sect sect--feedback">
 
-  </section>
+    <div class="container">
+
+      <div class="wrapper wrapper--flex-baseline mt-5">
+        <h2 class="sect-heading no-indents">Связаться с нами</h2>
+        <p class="no-indents">Если у вас появились вопросы, напишите нам с помощью данной формы</p>
+      </div>
 
 
+      <form action="">
 
-  <section class="get-in-touch">
+      </form>
+
+    </div>
 
   </section>
 
