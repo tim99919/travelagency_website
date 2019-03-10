@@ -22,13 +22,15 @@ if (!$_SESSION['LANGUAGE_INT']) {
 	$_SESSION['LANGUAGE_INT'] = 'en';
 }
 if ($_SERVER['REQUEST_URI'] == '/') {
+	$_SESSION['LANG_LINK'] = '';
+	$_SESSION['LANGUAGE_INT'] = 'en';
 	$Page   = 'index';
 	$Module = 'index';
 } else {
 	$URL_Path  = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
 	$URL_Parts = explode('/',trim($URL_Path,'/'));
 	$Page      = array_shift($URL_Parts);
-	if (in_array($Page, ['sp', 'ru'])) {
+	if (in_array($Page, ['es', 'ru'])) {
 		$_SESSION['LANGUAGE_INT'] = $Page;
 		$_SESSION['LANG_LINK'] = '/'.$Page;
 		$Page      = array_shift($URL_Parts);
@@ -44,10 +46,10 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 		};
 	}else{
 		if ($Page == 'en') {
+			$_SESSION['LANGUAGE_INT'] = 'en';
+			$_SESSION['LANG_LINK'] = '';
 			exit(header('Location: /'.implode('/', $URL_Parts)));
 		}
-		$_SESSION['LANGUAGE_INT'] = 'en';
-		$_SESSION['LANG_LINK'] = '';
 		$Module    = array_shift($URL_Parts);
 		if (!empty($Module)) {
 			$Param = array();
@@ -130,9 +132,28 @@ function PageSelector($p1, $p2, $p3, $p4 = 12) {
 }
 
 // Меню
-function HeaderTop($p1 = 1, $p2 = 1){
-	$query = $db -> query('SELECT `menu_key`, `munu_text` FROM `menu` WHERE `menu_lang` = "?s"', $_SESSION['LANGUAGE_INT']);
-	return 'Menu here';
+function HeaderTop($db, $p1 = 1, $p2 = 1){
+	$query = $db -> query('SELECT `menu_key`, `menu_text`, `menu_link` FROM `menu` WHERE `menu_lang` = "?s" ORDER BY `id` ASC', $_SESSION['LANGUAGE_INT']);
+	$i = 1;
+	$list = '
+	<div class="container">
+		<div class="row justify-content-between align-items-baseline">
+			<div class="logo col-2">
+				<span>LOGO</span>
+	  		</div>
+	  		<nav class="main-mnu col-7">
+				<ul class="main-mnu__items">';
+					while (($result = $query -> fetch_assoc()) !== NULL) {
+						$isActive = ($i === $p1) ? ' active' : '';
+						$list .= '<li class="main-mnu__item'.$isActive.'"><a href="'.$_SESSION['LANG_LINK'].$result['menu_link'].'">'.$result['menu_text'].'</a></li>';
+						$i++;
+					};
+					$list .= '
+				</ul>
+			</nav>
+		</div>
+	</div>';
+	return $list;
 }
 
 function translit($s) {

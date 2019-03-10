@@ -2,12 +2,12 @@
 defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
 ?>
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="<?=$_SESSION['LANGUAGE_INT']?>">
 
 <head>
 
   <meta charset="utf-8">
-  <base href="/">
+  <base href="/<?=$_SESSION['LANGUAGE_INT']?>">
 
   <title>SPBPETERCITYTRIP</title>
   <meta name="description" content="">
@@ -80,6 +80,7 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
 
 
   <header class="header">
+    <?=HeaderTop($db, 1);?>
 
     <div class="container">
       <div class="row justify-content-between align-items-baseline">
@@ -103,6 +104,7 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
 
       </div>
     </div>
+    
 
     <!-- <div class="header__content"> -->
 
