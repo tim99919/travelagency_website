@@ -82,7 +82,7 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
   <header class="header">
     <?=HeaderTop($db, 1);?>
 
-    <div class="container">
+    <!-- <div class="container">
       <div class="row justify-content-between align-items-baseline">
 
         <div class="logo col-2">
@@ -103,7 +103,7 @@ defined("SPBPETERCITYTRIP_78") or die("Доступ закрыт!");
         </nav>
 
       </div>
-    </div>
+    </div> -->
     
 
     <!-- <div class="header__content"> -->
